@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 
 /**
  * This is the model class for table "course_step".
@@ -33,11 +32,11 @@ class CourseStep extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_course', 'name', 'sort', 'description', 'video'], 'required'],
+            [['id_course', ], 'required'],
             [['id_course', 'sort'], 'integer'],
             [['name', 'video'], 'string', 'max' => 100],
             [['description'], 'string', 'max' => 1000],
-            [['id_course'], 'exist', 'skipOnError' => true, 'targetClass' => Course::className(), 'targetAttribute' => ['id_course' => 'id']],
+            [['id_course'], 'exist', 'skipOnError' => true, 'targetClass' => Course::class, 'targetAttribute' => ['id_course' => 'id']],
         ];
     }
 
@@ -61,7 +60,7 @@ class CourseStep extends \yii\db\ActiveRecord
      */
     public function getCourse()
     {
-        return $this->hasOne(Course::className(), ['id' => 'id_course']);
+        return $this->hasOne(Course::class, ['id' => 'id_course']);
     }
 
     /**
@@ -69,6 +68,6 @@ class CourseStep extends \yii\db\ActiveRecord
      */
     public function getCourseStepSubs()
     {
-        return $this->hasMany(CourseStepSub::className(), ['id_step' => 'id_step']);
+        return $this->hasMany(CourseStepSub::class, ['id_step' => 'id_step']);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 
 /**
  * This is the model class for table "course".
@@ -30,7 +29,7 @@ class Course extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'logo'], 'required'],
+            [['name', ], 'required'],
             [['name'], 'string', 'max' => 150],
             [['description'], 'string', 'max' => 1000],
             [['logo'], 'string', 'max' => 100],

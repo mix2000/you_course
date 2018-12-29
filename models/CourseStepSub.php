@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "course_step_sub".
  *
@@ -37,7 +35,7 @@ class CourseStepSub extends \yii\db\ActiveRecord
             [['id_step', 'sort'], 'integer'],
             [['name', 'video_key', 'photo'], 'string', 'max' => 100],
             [['description'], 'string', 'max' => 1000],
-            [['id_step'], 'exist', 'skipOnError' => true, 'targetClass' => CourseStep::className(), 'targetAttribute' => ['id_step' => 'id_step']],
+            [['id_step'], 'exist', 'skipOnError' => true, 'targetClass' => CourseStep::class, 'targetAttribute' => ['id_step' => 'id_step']],
         ];
     }
 
@@ -62,6 +60,6 @@ class CourseStepSub extends \yii\db\ActiveRecord
      */
     public function getStep()
     {
-        return $this->hasOne(CourseStep::className(), ['id_step' => 'id_step']);
+        return $this->hasOne(CourseStep::class, ['id_step' => 'id_step']);
     }
 }
