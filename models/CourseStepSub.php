@@ -31,7 +31,7 @@ class CourseStepSub extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_step', 'sort', 'name', 'description', 'video_key', 'photo'], 'required'],
+            [['id_step', 'sort'], 'required'],
             [['id_step', 'sort'], 'integer'],
             [['name', 'video_key', 'photo'], 'string', 'max' => 100],
             [['description'], 'string', 'max' => 1000],
